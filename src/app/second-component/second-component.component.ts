@@ -9,7 +9,6 @@ import { Message } from '../message';
   styleUrls: ['./second-component.component.scss']
 })
 export class SecondComponentComponent {
-
   message: string = "unknown";
   message$ = this.commonService.retriveMessage();
 

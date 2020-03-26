@@ -18,7 +18,6 @@ export class FirstComponentComponent {
     this.subscription = message.subscribe(
       msg => this.messageReceived(msg)
     );
-
   }
 
   public messageReceived(message: Message): any {
