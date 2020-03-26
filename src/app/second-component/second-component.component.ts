@@ -10,6 +10,8 @@ import { Message } from '../message';
 })
 export class SecondComponentComponent {
   message: string;
+  message$ = this.commonService.retriveMessage();
+
   subscription: Subscription;
 
   constructor(
@@ -18,12 +20,11 @@ export class SecondComponentComponent {
   }
 
   ngOnInit() {
-    const message = this.commonService.retriveMessage();
-    this.subscription = message.subscribe(msg => this.doSomething(msg));
+    this.subscription = this.message$.subscribe(msg => this.doSomething(msg));
   }
 
   public doSomething(message: Message) {
-    this.message = message.getNumber() > 0.5
+    this.message = message.number > 0.5
       ? 'maggiore'
       : 'minore';
   }
