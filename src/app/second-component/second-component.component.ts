@@ -9,21 +9,20 @@ import { Message } from '../message';
   styleUrls: ['./second-component.component.scss']
 })
 export class SecondComponentComponent {
-  message: string;
+
+  message: string = "unknown";
+  message$ = this.commonService.retriveMessage();
+
   subscription: Subscription;
 
   constructor(
     private commonService: MessengerService
   ) {
+    this.subscription = this.message$.subscribe(msg => this.messageReceived(msg));
   }
 
-  ngOnInit() {
-    const message = this.commonService.retriveMessage();
-    this.subscription = message.subscribe(msg => this.doSomething(msg));
-  }
-
-  public doSomething(message: Message) {
-    this.message = message.getNumber() > 0.5
+  public messageReceived(message: Message) {
+    this.message = message.number > 0.5
       ? 'maggiore'
       : 'minore';
   }

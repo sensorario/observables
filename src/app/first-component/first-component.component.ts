@@ -9,7 +9,7 @@ import { Message } from '../message';
   styleUrls: ['./first-component.component.scss']
 })
 export class FirstComponentComponent {
-  message: string;
+  message: string = "unknown";
   subscription: Subscription;
 
   constructor(private commonService: MessengerService
@@ -22,7 +22,7 @@ export class FirstComponentComponent {
   }
 
   public messageReceived(message: Message): any {
-    this.message = message.getNumber() > 0.5
+    this.message = message.number > 0.5
       ? 'alto'
       : 'basso';
   }

@@ -25,14 +25,14 @@ describe('SecondComponentComponent', () => {
   });
 
   it('should update message to "alto" whenever random number higher than 0.5', () => {
-    const message = new Message('foo', 0.7);
-    component.doSomething(message)
+    const message = { message: 'foo', number: 0.7 };
+    component.messageReceived(message)
     expect(component.message).toBe('maggiore');
   });
 
   it('should update message to "basso" whenever random number lower than 0.5', () => {
-    const message = new Message('foo', 0.3);
-    component.doSomething(message)
+    const message = { message: 'foo', number: 0.3 };
+    component.messageReceived(message)
     expect(component.message).toBe('minore');
   });
 
