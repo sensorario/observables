@@ -18,11 +18,10 @@ export class FirstComponentComponent {
     this.subscription = message.subscribe(
       msg => this.messageReceived(msg)
     );
-
   }
 
   public messageReceived(message: Message): any {
-    this.message = message.getNumber() > 0.5
+    this.message = message.number > 0.5
       ? 'alto'
       : 'basso';
   }

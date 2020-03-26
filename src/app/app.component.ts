@@ -15,16 +15,19 @@ export class AppComponent {
   constructor(
     private commonService: MessengerService
   ) {
-    const message = this.commonService.retriveMessage();
-    this.subscription = message.subscribe((msg: Message) => {
-      console.log(msg.getMessage());
+    const message$ = this.commonService.retriveMessage();
+    this.subscription = message$.subscribe((msg: Message) => {
+      console.log(msg.message);
     });
   }
 
   clicked() {
-    this.commonService.broadcast(
-      new Message('sent from AppComponent', Math.random())
-    );
+    this
+      .commonService
+      .broadcast({
+        message: 'sent from AppComponent',
+        number: Math.random()
+      });
   }
 
   ngOnDestroy() {

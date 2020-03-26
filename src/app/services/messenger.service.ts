@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { Message } from '../message';
 
 @Injectable({
@@ -7,18 +7,17 @@ import { Message } from '../message';
 })
 export class MessengerService {
 
-  private subject = new Subject;
+  private subject = new Subject<Message>();
 
   getSubject() {
     return this.subject;
   }
 
-  /* istanbul ignore else  */
-  broadcast(message: Message): void {
-    return this.subject.next(message);
+  broadcast(message: Message) {
+    this.subject.next(message);
   }
 
-  retriveMessage(): any {
+  retriveMessage(): Observable<Message> {
     return this.subject.asObservable();
   }
 
