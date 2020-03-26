@@ -9,7 +9,7 @@ import { Message } from '../message';
   styleUrls: ['./first-component.component.scss']
 })
 export class FirstComponentComponent {
-  message: string;
+  message: string = "unknown";
   subscription: Subscription;
 
   constructor(private commonService: MessengerService
