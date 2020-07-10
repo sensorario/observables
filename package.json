@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test --codeCoverage=true",
+    "test": "ng test --codeCoverage=true --code-coverage --source-map",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~8.2.9",
     "@angular/platform-browser-dynamic": "~8.2.9",
     "@angular/router": "~8.2.9",
+    "karma-html-reporter": "0.2.7",
+    "karma-json-reporter": "1.2.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

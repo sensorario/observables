@@ -3,22 +3,16 @@ import { Subject, Observable } from 'rxjs';
 import { Message } from '../message';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class MessengerService {
+	public subject = new Subject<Message>();
 
-  private subject = new Subject<Message>();
+	broadcast (message: Message) {
+		this.subject.next(message);
+	}
 
-  getSubject() {
-    return this.subject;
-  }
-
-  broadcast(message: Message) {
-    this.subject.next(message);
-  }
-
-  retriveMessage(): Observable<Message> {
-    return this.subject.asObservable();
-  }
-
+	retriveMessage (): Observable<Message> {
+		return this.subject.asObservable();
+	}
 }
